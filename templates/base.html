@@ -15,18 +15,25 @@
 Witaj {{ user.username }}
 {% endif %}
 <div class="header">
-{#    <ul class="nav">#}
-{#        <li class="nav"><a href="{% url 'add_wallet' %}">Dodaj Portfel</a></li>#}
-{#        <li class="nav"><a href="{% url 'list_wallet' %}">Portfele</a></li>#}
-{#        <li class="nav"><a href="{% url 'add_cashflow' %}">Cashflow add</a></li>#}
-{#        <li class="nav"><a href="#">ddd</a></li>#}
-{#    </ul>#}
     <ul class="nav">
         {% if user.is_authenticated %}
             <li class="nav"><a href="{% url 'wyloguj' %}">Wyloguj</a> </li>
         {% else %}
-            <li class="nav"><a href="{% url 'zaloguj' %}">Zaloguj</a> </li>
+            <li class="nav"><a href="{% url 'login' %}">Zaloguj</a> </li>
+            
         {% endif %}
+       <ul class="nav">
+           <li class="nav"><a href="{% url 'create_user' %}">Zarejestruj się</a></li>
+           <li class="nav"><a href="{% url 'memberships' %}">Dodaj Członka</a></li>
+           <li class="nav"><a href="{% url 'memberships_list' %}">Lista członków Koła </a></li>
+           <li class="nav"><a href="{% url 'fish_list' %}">Ryby w zbiornikach </a></li>
+           <li class="nav"><a href="{% url 'catch_list' %}">Połowy </a></li>
+           <li class="nav"><a href="{% url 'competitions' %}">Zawody wędkarskie PZW  </a></li>
+           <li class="nav"><a href="{% url 'water_bodies' %}">Zbiorniki wodne </a></li>
+           <li class="nav"><a href="{% url 'informations_list' %}">Informacje </a></li>
+           <li class="nav"><a href="{% url 'contact_list' %}">Kontakt </a></li>
+       </ul>
+    <ul class="nav">
     </ul>
 </div>
 <div class="cont">{% block content %}{% endblock %}</div>

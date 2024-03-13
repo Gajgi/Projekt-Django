@@ -1,58 +1,112 @@
 body {
     background-image: url('/static/warta.jpeg');
     background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    h1 {
+        color: white;
+        text-align: center;
+        margin-top: 50px;
+    }
 }
-/* Wybieramy wszystkie elementy typu ul (nieuporządkowane listy) z klasą .nav */
+
 ul.nav {
-    list-style-type: none;  /* Usuwamy bullet pointy (znaki przed pozycjami listy) */
-    margin: 0;  /* Usuwamy zewnętrzne marginesy */
-    padding: 0;  /* Usuwamy wewnętrzne marginesy (padding) */
-    overflow: hidden;  /* Ustalamy, że elementy, które wystają poza obszar tego elementu, nie będą widoczne */
-    background-color: #333;  /* Ustalamy kolor tła na ciemnoszary */
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: relative;
+    z-index: 2;
 }
 
-/* Wybieramy wszystkie elementy typu li (pozycje listy) z klasą .nav */
 li.nav {
-    float: left;  /* Ustalamy, że te elementy mają 'pływać' (czyli być ustawiane) po lewej stronie rodzica */
+    float: left;
 }
 
-/* Wybieramy wszystkie linki wewnątrz pozycji listy z klasą .nav */
 li.nav a {
-    display: block;  /* Ustalamy, że linki są blokowe (zajmują całą dostępną szerokość) */
-    color: white;  /* Kolor tekstu linków na biały */
-    text-align: center;  /* Wyśrodkowanie tekstu linków */
-    padding: 14px 16px;  /* Wewnętrzny margines na górze/dole ma 14px, a po lewej/prawej stronie 16px */
-    text-decoration: none;  /* Usuwamy dekorację linków (np. podkreślenie) */
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 15px 16px;
+    text-decoration: none;
+    background-color: saddlebrown;
 }
 
-/* Wybieramy elementy z klasą .cont */
-.cont{
-    min-height:100px ;  /* Ustalamy minimalną wysokość tych elementów na 500px */
-    background-color: darkolivegreen;  /* Ustalamy kolor tła na bisque (lekko żółty) */
-}
-
-/* Styli dla linków w pozycjach z klasą .nav przy najechaniu na nie kursorem */
 li.nav a:hover {
-    background-color: #111;  /* Zmieniamy kolor tła na ciemnoszary */
+    background-color: sienna;
 }
 
-/* Wybieramy elementy z klasą .header */
-/*.header{*/
-/*    height: 50px;  !* Ustalamy wysokość tych elementów na 50px *!*/
-/*    background-color: darkgreen;  !* Ustalamy kolor tła na antiquewhite (lekko żółty) *!*/
-/*    display: flex;  !* Tworzymy flexboxa, czyli rodzaj kontenera, który pozwala na elastyczne ustawianie dzieci *!*/
-/*    justify-content: space-between;  !* Rozstawiamy dzieci z równymi odstępami między nimi *!*/
-/*}*/
-
-/* Wybieramy elementy z klasą .footer */
-.footer{
-    height: 50px;  /* Ustalamy wysokość tych elementów na 50px */
-    background-color: antiquewhite;  /* Ustalamy kolor tła na antiquewhite (lekko żółty) */
+.header {
+    height: 50px;
+    width: fit-content;
+    background-color: antiquewhite;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+    flex-grow: 2;
 }
 
-/* Wybieramy elementy z klasą .conteiner */
-.conteiner{
-    display: flex;  /* Tworzymy flexboxa, czyli rodzaj kontenera, który pozwala na elastyczne ustawianie dzieci */
-    flex-direction:column;  /* Ustalamy kierunek główny na kolumnę (czyli dzieci układają się pionowo) */
-    justify-content: space-evenly;  /* Rozstawiamy dzieci z równymi odstępami między nimi */
+.footer {
+    height: 100px;
+    background-color: antiquewhite;
+    position: relative; /* zmieniono na relative */
+    z-index: 2; /* zmieniono na 2 */
+}
+
+.cont {
+    min-height: 750px;
+    background-color: rgba(255, 228, 196, 0.7);
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.information-block {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: saddlebrown;
+}
+.container {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    display: flex;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #333;
+    color: white;
+}
+
+.sidebar-nav {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar-nav li {
+    padding: 10px;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    margin: 5px;
+}
+
+.column {
+    flex: 1;
+    margin-right: 20px;
 }

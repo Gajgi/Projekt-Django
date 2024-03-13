@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+<div class="container">
+    <!-- Pierwsza kolumna -->
+    <div class="column">
+        <h2>Dodaj ciało wodne</h2>
+        <form method="post" class="form-wrapper">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <p>
+                <input type="submit" value="Dodaj" class="submit-btn">
+            </p>
+        </form>
+        {% if form.errors %}
+            <div class="error-msg">
+                {{ form.errors }}
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Druga kolumna -->
+    <div class="column">
+        <h2>Zbiorniki</h2>
+        {% if water_bodies %}
+            <table class="water-body-table">
+                <thead>
+                    <tr>
+                        <th>Lokalizacja</th>
+                        <th>Nazwa</th>
+                        <th>Gatunki ryb</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for water_body in water_bodies %}
+                        <tr>
+                            <td>{{ water_body.location }}</td>
+                            <td>{{ water_body.name }}</td>
+                            <td>
+                                <ul>
+                                    {% for fish in water_body.fish_species.all|dictsort:"name" %}
+                                        <li>{{ fish.name }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Brak dostępnych zbiorników</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

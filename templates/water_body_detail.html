@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="column">
+        <h2>Zaktualizuj dane zbiornika</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <p>
+                <input type="submit" value="Zaktualizuj dane">
+            </p>
+        </form>
+
+        {% if form.errors %}
+            <div style="color: red;">
+                {{ form.errors }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="column">
+        <h2>Szczegóły zbiornika</h2>
+        <h3>{{ water_body.name }}</h3>
+        <p>Lokalizacja: {{ water_body.location }}</p>
+        {% if fish_species %}
+            <p>Rodzaje ryb: {{ fish_species }}</p>
+        {% else %}
+            <p>Brak informacji o rodzajach ryb</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

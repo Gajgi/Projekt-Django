@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Lista Zawodów PZW</h1>
+<ol>
+  {% for competition in competitions %}
+    <li> 
+        Nazwa: {{ competition.name }}, 
+        Data: {{ competition.date }}, 
+        Opis: {{ competition.description }},
+        Lokalizacja: {% if competition.waterbody %}
+                         {{ competition.waterbody.location }}
+                     {% else %}
+                         Brak przypisanego ciała wodnego
+                     {% endif %},
+        Pierwsze miejsce: {{ competition.first_place }},
+        Drugie miejsce: {{ competition.second_place }},
+        Trzecie miejsce: {{ competition.third_place }},
+    </li>
+  {% endfor %}
+</ol>
+<h2> Sezon 2024 roku</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Dodaj</button>
+</form>
+{% endblock %}

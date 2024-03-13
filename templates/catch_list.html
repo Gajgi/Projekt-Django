@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Najlepsze połowy w naszych zbiornikach</h1>
+
+<ul>
+  {% for catch in catches %}
+    <li> 
+        Wędkarz: {{ catch.angler.username }}, 
+        Ryba: {{ catch.fish.name }}, 
+        Waga: {{ catch.weight }}, 
+        Data połowu: {{ catch.date }} 
+    </li>
+  {% endfor %}
+</ul>
+
+<h2>Dodaj połów</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Dodaj</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Lista Ryb w Naszych  Zbiornikach</h1>
+
+<ul>
+  {% for fish in fishes %}
+    <li> Nazwa: {{ fish.name }}, Maksymalna waga: {{ fish.max_weight }} </li>
+  {% endfor %}
+</ul>
+
+<h2>Dodaj Rybę</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Dodaj</button>
+</form>
+
+{% endblock %}

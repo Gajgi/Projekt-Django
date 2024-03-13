@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="margin: 5px">
+    <h2>Dodaj członka koła wędkarskiego</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p>
+            <input type="submit" value="Dodaj członka">
+        </p>
+    </form>
+
+    {% if form.errors %}
+        <div style="color: red;">
+            {{ form.errors }}
+        </div>
+    {% endif %}
+
+    <h2></h2>
+    {% for membership in memberships %}
+        <div>
+            <h3>{{ membership.angler.username }}</h3>
+            <p>Data dołączenia: {{ membership.date }}</p>
+            <p>Opłata: {{ membership.fee }}</p>
+        </div>
+    {% empty %}
+
+    {% endfor %}
+</div>
+{% endblock %}

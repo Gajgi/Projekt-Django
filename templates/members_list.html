@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Lista członków Koła wedkarskiego Dąbie nad Nerem</h1>
+
+<form method="GET">
+    <input type="text" name="search" placeholder="Szukaj członka..."/>
+    <input type="submit" value="Szukaj"/>
+</form>
+
+<ul>
+    {% for member in members %}
+        <li>{{ member.angler.username }}, Data rozpoczęcia członkostwa: {{ member.date }}, Wysokość składki: {{ member.fee }}</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
