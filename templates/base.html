@@ -1,0 +1,34 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
+    <title>PZW Koło Dabie </title>
+</head>
+<body class="conteiner">
+{% if user.is_authenticated %}
+Witaj {{ user.username }}
+{% endif %}
+<div class="header">
+{#    <ul class="nav">#}
+{#        <li class="nav"><a href="{% url 'add_wallet' %}">Dodaj Portfel</a></li>#}
+{#        <li class="nav"><a href="{% url 'list_wallet' %}">Portfele</a></li>#}
+{#        <li class="nav"><a href="{% url 'add_cashflow' %}">Cashflow add</a></li>#}
+{#        <li class="nav"><a href="#">ddd</a></li>#}
+{#    </ul>#}
+    <ul class="nav">
+        {% if user.is_authenticated %}
+            <li class="nav"><a href="{% url 'wyloguj' %}">Wyloguj</a> </li>
+        {% else %}
+            <li class="nav"><a href="{% url 'zaloguj' %}">Zaloguj</a> </li>
+        {% endif %}
+    </ul>
+</div>
+<div class="cont">{% block content %}{% endblock %}</div>
+</body>
+</html>
